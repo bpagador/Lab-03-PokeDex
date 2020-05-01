@@ -1,12 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class PokeItem extends Component {
     render() {
         return (
-            <li className = 'item-container'>
-                <h2>{this.props.pokeData.pokemon}</h2>
-                <img src={this.props.pokeData.url_image} alt={this.props.pokeData.pokemon} />
-                <p>Attack: {this.props.pokeData.attack} | Defense: {this.props.pokeData.defense}</p>
+            <li className = 'pokemon-container'>
+                {/* pokemon name */}
+                <h2 className='poke-name'>{this.props.pokemon.pokemon}</h2>
+
+                {/* pokemon image */}
+                <img className='poke-image' src={this.props.pokemon.url_image} alt={this.props.pokemon.pokemon} />
+                
+                {/* pokemon type */}
+                <h3 className="poke-type">Type(s): {this.props.pokemon.type_1} | {this.props.pokemon.type_2}</h3>
+                
+                {/* pokemon attack and defense */}
+                <p className='attack-defense'>Attack: {this.props.pokemon.attack} | Defense: {this.props.pokemon.defense}</p>
             </li>
 
         );
