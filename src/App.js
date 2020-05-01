@@ -4,26 +4,25 @@ import Home from './Home';
 // import DetailPage from './DetailPage' //will need to create 
 
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Router>
-          <Switch>
-            <Route
-            path= '/'
-            exact
-            render= {( routerProps ) => < Home {...routerProps} />}
-            />
-            <Route
-            path='/:pokemon/:id'
-            // render={( routerProps ) => <DetailPage {...routerProps} />}
-            />
-          </Switch>
-        </Router>
-      </div>
-    )
-  }
-}
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <Router>
+//           <Switch>
+//             <Route
+//             path= '/'
+//             exact
+//             render= {( routerProps ) => < Home {...routerProps} />}
+//             />
+//             <Route
+//             path='/:pokemon/:id'
+//             // render={( routerProps ) => <DetailPage {...routerProps} />}
+//             />
+//           </Switch>
+//         </Router>
+//       </div>  
+//   }
+// }
 
 
