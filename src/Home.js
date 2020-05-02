@@ -3,11 +3,18 @@ import request from 'superagent';
 import Header from './Header';
 import './App.css'
 import SearchBar from './SearchBar';
+import PokeList from './PokeList';
 
 export default class Home extends Component {
     state = {
-        searchQuery: null,
         pokemon: [],
+        searchQuery: '',
+        searchType: '',
+    }
+
+    componentDidMount = async() => {
+        const fetchedPokemon = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex`)
+        this.setState({ pokemon: fetchedPokemon.body.results })
     }
 
     handleChange = (event) => {
@@ -15,21 +22,29 @@ export default class Home extends Component {
         this.setState({ searchQuery: value });
     }
 
-    handleClick = async() => {
-        const fetchData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}`);
-        this.setState({ data: fetchData.body.results});
-    }
-    
-    handleAttackClick = async() => {
-        const fetchData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex`);
-        const attackData = fetchData.body.results.filter( (event) => {
-            if (event.attack >= this.state.searchQuery) {
-                return true;
-            }
-            return false;
-        });
-        this.setState({ data: attackData });
+    handleTypeChange = (event) => {
+        const pokeType = event.target.value;
+        this.setState({ searchType: pokeType })
     }
 
+    handleClick = async() => {
+        const clickedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type_1=${this.state.searchType}`);
+        const clickResults = clickedData.body.results;
+        this.setState({ pokemon: clickResults});
+    }
+    
+    render(){
+        return (
+            <div>
+                <Header />
+                <SearchBar dropDown={this.handleTypeChange}/>
+                <input onChange={this.handleChange}/>
+                <button onClick={this.handleClick}>Search</button>
+                <PokeList pokeArray={this.state.pokemon} />
+            </div>
+
+
+        )
+    }
     }
 
