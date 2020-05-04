@@ -75,41 +75,19 @@ export default class Home extends Component {
 
 // pagination stuff
     routeToNextPage = () => {
-        // const nextPageNumber = 1;
-        console.log(this.state.page);
-
         this.setState(( prevState, nextPageNumber ) => ({
-
             page: prevState.page + 1
         }) )
 
         this.handlePageClick(this.state.page + 1)
-
-        console.log(this.state.page + 1);
-        // const response = await request.get (this.state.info.next);
-        // console.log(response);
-        // const results = response.body.results;
-        // const info = response.body.info;
-        // this.setState({ characters: results, info: info})
     }
 
     routeToPrevPage = () => {
-        // const prevPageNumber = this.state.page -1;
-        console.log(this.state.page);
-
         this.setState(( prevState, prevPageNumber ) => ({
-
             page: prevState.page - 1
         }))
 
         this.handlePageClick(this.state.page - 1)
-
-        console.log(this.state.page - 1);
-
-        // const response = await request.get (this.state.info.prev);
-        // const results = response.body.results;
-        // const info = response.body.info;
-        // this.setState({ pokemon: results, info: info })
     }
 // ----------------------------------
     render(){
@@ -122,11 +100,9 @@ export default class Home extends Component {
                     <input onChange={this.handleChange}/>
                     <button onClick={this.handleClick}>Search</button>
                 </section>
-{/* pagination stuff ------------*/}
 
-                {/* {this.state.info.prev &&  */}
+{/* pagination stuff ------------*/}
                 <button onClick={this.routeToPrevPage}>Previous</button>
-                {/* {this.state.info.next &&  */}
                 <button onClick={this.routeToNextPage}>Next</button>
 {/* ---------------------------- */}
                 
