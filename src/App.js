@@ -6,7 +6,8 @@ import {
 
 import Home from './Home';
 import DetailPage from './DetailPage'
-
+import './App.css'
+import './PokeProfile.css'
 
 export default class App extends Component {
   render() {

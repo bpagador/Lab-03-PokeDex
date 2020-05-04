@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './PokeProfile.css'
 
 export default class PokeProfile extends Component {
     render() {

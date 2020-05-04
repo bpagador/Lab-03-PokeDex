@@ -38,8 +38,12 @@ export default class Home extends Component {
             <div>
                 <Header />
                 <SearchBar dropDown={this.handleTypeChange}/>
-                <input onChange={this.handleChange}/>
-                <button onClick={this.handleClick}>Search</button>
+                <section className='find-poke-bar'> 
+                    <p>Step 2: find pokemon by name</p>
+                    <input onChange={this.handleChange}/>
+                    <button onClick={this.handleClick}>Search</button>
+                </section>
+                
                 <PokeList pokeArray={this.state.pokemon} />
             </div>
 

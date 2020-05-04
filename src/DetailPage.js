@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import PokeProfile from './PokeProfile'
 import Header from './Header'
+import './PokeProfile.css'
 
 export default class DetailPage extends Component {
     state = {
