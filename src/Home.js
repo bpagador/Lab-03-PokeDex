@@ -10,6 +10,7 @@ export default class Home extends Component {
         pokemon: [],
         searchQuery: '',
         searchType: '',
+        sortBy: '',
         page: 1, 
         info: {}
     }
@@ -61,16 +62,20 @@ export default class Home extends Component {
     }
 
     handleClick = async() => {
-        const clickedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type_1=${this.state.searchType}`);
+        const clickedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type_1=${this.state.searchType}&sort=${this.state.sortBy}`);
         const clickResults = clickedData.body.results;
         this.setState({ pokemon: clickResults, page: 1});
     }
 
     handlePageClick = async(currentPage) => {
 
-        const clickedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type_1=${this.state.searchType}&page=${currentPage}`);
+        const clickedData = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type_1=${this.state.searchType}&sort=${this.state.sortBy}&page=${currentPage}`);
         const clickResults = clickedData.body.results;
         this.setState({ pokemon: clickResults});
+    }
+
+    handleSortChange = (sortString) => {
+        this.setState({ sortBy: sortString})
     }
 
 // pagination stuff
@@ -94,12 +99,16 @@ export default class Home extends Component {
         return (
             <div>
                 <Header />
-                <SearchBar dropDown={this.handleTypeChange}/>
+                <SearchBar 
+                dropDown={this.handleTypeChange}
+                handleSortChange={this.handleSortChange} 
+                sortThis={this.state.sortBy}/>
                 <section className='find-poke-bar'> 
-                    <p>Step 2: find pokemon by name</p>
+                    <p> step 2: enter part or all of the pokemon name </p>
                     <input onChange={this.handleChange}/>
                     <button onClick={this.handleClick}>Search</button>
                 </section>
+                   
 
 {/* pagination stuff ------------*/}
                 <button onClick={this.routeToPrevPage}>Previous</button>

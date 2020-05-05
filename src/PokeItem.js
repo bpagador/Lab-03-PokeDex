@@ -27,6 +27,19 @@ export default class PokeItem extends Component {
                         <p className='attack-defense'>Attack: {this.props.pokemon.attack} | Defense: {this.props.pokemon.defense}</p>
                     </li>
 
+                    <li>
+                        <p className='shape'>Shape: {this.props.pokemon.shape}</p>
+                    </li>
+
+                    <li>
+                        <p className='shape'>Ability: {this.props.pokemon.ability_1}</p>
+                    </li>
+
+                    <li>
+                        <p className='shape'>Base Experience: {this.props.pokemon.base_experience}</p>
+                    </li>
+
+
                 </ul>
             </li>
 
