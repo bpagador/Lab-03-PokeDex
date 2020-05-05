@@ -38,8 +38,6 @@ export default class PokeItem extends Component {
                     <li>
                         <p className='shape'>Base Experience: {this.props.pokemon.base_experience}</p>
                     </li>
-
-
                 </ul>
             </li>
 
